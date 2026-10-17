@@ -61,7 +61,7 @@
                                 </td>
                                 <td>
                                     <span class="badge bg-primary-subtle text-primary-emphasis">
-                                        <i class="bi bi-people me-1"></i><?= esc($s['total_personas'] ?? 0) ?> personas
+                                        <i class="bi bi-people me-1"></i><?= esc($s['total_personas'] ?? 0) ?> <?= ((int) ($s['total_personas'] ?? 0) === 1) ? 'persona' : 'personas' ?>
                                     </span>
                                 </td>
                                 <td class="text-end">
