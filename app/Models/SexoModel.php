@@ -13,6 +13,8 @@ class SexoModel extends Model
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $allowedFields    = ['nombre'];
+    protected $beforeInsert = ['normalizarNombre'];
+    protected $beforeUpdate = ['normalizarNombre'];
 
     protected $validationRules = [
         'nombre' => 'required|min_length[2]|max_length[50]',
@@ -37,4 +39,17 @@ class SexoModel extends Model
                     ->orderBy('sexo.idsexo', 'ASC')
                     ->findAll();
     }
+    
+    /**
+     * Quita espacios sobrantes y pone mayúscula inicial al nombre
+     */
+    protected function normalizarNombre(array $data): array
+    {
+        if (isset($data['data']['nombre'])) {
+            $data['data']['nombre'] = mb_convert_case(trim($data['data']['nombre']), MB_CASE_TITLE, 'UTF-8');
+        }
+
+        return $data;
+    }
+
 }
