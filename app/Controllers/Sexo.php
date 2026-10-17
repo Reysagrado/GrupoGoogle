@@ -67,11 +67,8 @@ class Sexo extends BaseController
     public function listar()
     {
         $search = $this->request->getGet('q');
-        if (!empty($search)) {
-            $sexos = $this->sexoModel->like('nombre', $search)->findAll();
-        } else {
-            $sexos = $this->sexoModel->getSexosConConteo();
-        }
+            
+        $sexos = $this->sexoModel->getSexosConConteo($search);
 
         $data = [
             'title'  => 'Catálogo de Sexos',
