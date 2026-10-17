@@ -57,4 +57,12 @@ class SexoModel extends Model
         return $data;
     }
 
+    /**
+     * Cantidad de personas que usan este sexo
+     */
+    public function contarPersonas(int $id): int
+    {
+        return (int) $this->db->table('persona')->where('idsexo', $id)->countAllResults();
+    }
+
 }
