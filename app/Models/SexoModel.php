@@ -31,15 +31,20 @@ class SexoModel extends Model
     /**
      * Obtener listado con conteo de personas asociadas
      */
-    public function getSexosConConteo()
+    public function getSexosConConteo($search = null)
     {
-        return $this->select('sexo.*, COUNT(persona.idpersona) AS total_personas')
-                    ->join('persona', 'persona.idsexo = sexo.idsexo', 'left')
-                    ->groupBy('sexo.idsexo')
-                    ->orderBy('sexo.idsexo', 'ASC')
-                    ->findAll();
+        $builder = $this->select('sexo.*, COUNT(persona.idpersona) AS total_personas')
+                        ->join('persona', 'persona.idsexo = sexo.idsexo', 'left')
+                        ->groupBy('sexo.idsexo')
+                        ->orderBy('sexo.idsexo', 'ASC');
+
+        if (!empty($search)) {
+            $builder->like('sexo.nombre', $search);
+        }
+
+        return $builder->findAll();
     }
-    
+
     /**
      * Quita espacios sobrantes y pone mayúscula inicial al nombre
      */
