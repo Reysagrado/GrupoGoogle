@@ -35,6 +35,7 @@ class Sexo extends BaseController
             'sexo'      => $sexo,
             'currentId' => $currentId,
             'posicion'  => $posicion,
+            'totalPersonas' => $currentId ? $this->sexoModel->contarPersonas($currentId) : 0,
         ];
 
         return view('sexo/sexo_record', $data);
@@ -157,7 +158,7 @@ class Sexo extends BaseController
         if (!$sexo) {
             return redirect()->to(base_url('sexo'))->with('error', 'Registro no encontrado.');
         }
-        
+
                 if ($this->sexoModel->contarPersonas((int)$id) > 0) {
             return redirect()->to(base_url('sexo/actual/' . $id))
                              ->with('error', 'No se puede eliminar: hay personas asociadas a este sexo.');
