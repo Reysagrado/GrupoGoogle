@@ -44,6 +44,10 @@
 
                         <dt class="col-sm-4 text-muted small text-uppercase">Nombre:</dt>
                         <dd class="col-sm-8 fs-5 fw-bold text-primary"><?= esc($sexo['nombre']) ?></dd>
+                        <dt class="col-sm-4 text-muted small text-uppercase">Personas:</dt>
+                        <dd class="col-sm-8">
+                            <span class="badge bg-primary-subtle text-primary-emphasis"><?= esc($totalPersonas ?? 0) ?></span>
+                        </dd>
                     </dl>
                 </div>
                 <div class="card-footer bg-light d-flex justify-content-between">
