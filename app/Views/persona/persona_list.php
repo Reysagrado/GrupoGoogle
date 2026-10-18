@@ -67,7 +67,7 @@
                                     <?= esc($p['apellidos'] . ' ' . $p['nombres']) ?>
                                 </td>
                                 <td class="text-muted small">
-                                    <?= !empty($p['fechanacimiento']) ? date('d/m/Y', strtotime($p['fechanacimiento'])) : '<span class="fst-italic text-black-50">-</span>' ?>
+                                                                       <?= !empty($p['fechanacimiento']) ? date('d/m/Y', strtotime($p['fechanacimiento'])) . ' (' . model(\App\Models\PersonaModel::class)->calcularEdad($p['fechanacimiento']) . ' años)' : '<span class="fst-italic text-black-50">-</span>' ?>
                                 </td>
                                 <td>
                                     <?php if (!empty($p['sexo_nombre'])): ?>
