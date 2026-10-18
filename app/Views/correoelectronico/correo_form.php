@@ -65,7 +65,7 @@
                         <!-- Fecha de Obtención -->
                         <div class="col-md-6">
                             <label for="fechaoptencion" class="form-label fw-semibold">Fecha de Obtención / Creación</label>
-                            <input type="date" class="form-control <?= isset($errors['fechaoptencion']) ? 'is-invalid' : '' ?>" id="fechaoptencion" name="fechaoptencion" value="<?= esc($old['fechaoptencion'] ?? date('Y-m-d')) ?>">
+                            <input type="date" max="<?= date('Y-m-d') ?>" class="form-control <?= isset($errors['fechaoptencion']) ? 'is-invalid' : '' ?>" id="fechaoptencion" name="fechaoptencion" value="<?= esc($old['fechaoptencion'] ?? date('Y-m-d')) ?>">
                             <?php if (isset($errors['fechaoptencion'])): ?>
                                 <div class="invalid-feedback"><?= esc($errors['fechaoptencion']) ?></div>
                             <?php endif; ?>
