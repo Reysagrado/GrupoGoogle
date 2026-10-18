@@ -157,7 +157,11 @@ class EstadoCivil extends BaseController
         if (!$estadoCivil) {
             return redirect()->to(base_url('estadocivil'))->with('error', 'Registro no encontrado.');
         }
-
+        if ($this->estadoCivilModel->contarPersonas((int)$id) > 0) {
+            return redirect()->to(base_url('estadocivil/actual/' . $id))
+                             ->with('error', 'No se puede eliminar: hay personas con este estado civil.');
+        }
+        
         $this->estadoCivilModel->delete((int)$id);
 
         $ultimo = $this->estadoCivilModel->elultimo();
