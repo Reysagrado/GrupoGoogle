@@ -72,7 +72,7 @@
                                     <div class="small text-muted font-monospace">C.I. <?= esc($d['cedula']) ?></div>
                                 </td>
                                 <td>
-                                    <span class="badge bg-info-subtle text-info-emphasis">
+                                    <span class="badge <?= (($d['tipo'] ?? 'Domicilio') === 'Trabajo') ? 'bg-warning-subtle text-warning-emphasis' : 'bg-info-subtle text-info-emphasis' ?>">
                                         <?= esc($d['tipo'] ?? 'Domicilio') ?>
                                     </span>
                                 </td>
