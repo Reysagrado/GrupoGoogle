@@ -32,13 +32,18 @@ class EstadoCivilModel extends Model
     /**
      * Obtener listado con conteo de personas asociadas
      */
-    public function getEstadosCivilesConConteo()
+        public function getEstadosCivilesConConteo($search = null)
     {
-        return $this->select('estadocivil.*, COUNT(persona.idpersona) AS total_personas')
-                    ->join('persona', 'persona.idestadocivil = estadocivil.idestadocivil', 'left')
-                    ->groupBy('estadocivil.idestadocivil')
-                    ->orderBy('estadocivil.idestadocivil', 'ASC')
-                    ->findAll();
+        $builder = $this->select('estadocivil.*, COUNT(persona.idpersona) AS total_personas')
+                        ->join('persona', 'persona.idestadocivil = estadocivil.idestadocivil', 'left')
+                        ->groupBy('estadocivil.idestadocivil')
+                        ->orderBy('estadocivil.idestadocivil', 'ASC');
+
+        if (!empty($search)) {
+            $builder->like('estadocivil.nombre', $search);
+        }
+
+        return $builder->findAll();
     }
     
     /**
