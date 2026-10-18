@@ -166,4 +166,14 @@ class PersonaModel extends Model
 
         return $data;
     }
+    
+    /**
+     * Personas que cumplen años en el mes actual
+     */
+    public function getCumpleanosDelMes(int $limite = 10): array
+    {
+        return $this->where('MONTH(fechanacimiento)', (int) date('n'), false)
+                    ->orderBy('DAY(fechanacimiento)', 'ASC', false)
+                    ->findAll($limite);
+    }
     }
