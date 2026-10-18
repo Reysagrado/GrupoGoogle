@@ -222,5 +222,24 @@
         </div>
     </div>
 </div>
-
+<!-- Cumpleaños del mes -->
+<div class="card mt-4">
+    <div class="card-header fw-bold">
+        <i class="bi bi-cake2-fill me-2 text-success"></i>Cumpleaños de este mes
+    </div>
+    <div class="card-body">
+        <?php if (!empty($cumpleanos)): ?>
+            <ul class="list-group list-group-flush">
+                <?php foreach ($cumpleanos as $c): ?>
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                        <span><?= esc($c['nombres'] . ' ' . $c['apellidos']) ?></span>
+                        <span class="badge bg-success rounded-pill"><?= date('d/m', strtotime($c['fechanacimiento'])) ?></span>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        <?php else: ?>
+            <p class="text-muted small mb-0">Nadie cumple años este mes.</p>
+        <?php endif; ?>
+    </div>
+</div>
 <?= $this->endSection() ?>
