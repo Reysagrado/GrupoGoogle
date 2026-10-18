@@ -67,11 +67,8 @@ class EstadoCivil extends BaseController
     public function listar()
     {
         $search = $this->request->getGet('q');
-        if (!empty($search)) {
-            $estadosCiviles = $this->estadoCivilModel->like('nombre', $search)->findAll();
-        } else {
-            $estadosCiviles = $this->estadoCivilModel->getEstadosCivilesConConteo();
-        }
+
+        $estadosCiviles = $this->estadoCivilModel->getEstadosCivilesConConteo($search);
 
         $data = [
             'title'          => 'Catálogo de Estados Civiles',
