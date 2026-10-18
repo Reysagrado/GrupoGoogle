@@ -19,6 +19,9 @@ class CorreoElectronicoModel extends Model
         'tipo',
         'fechaoptencion',
     ];
+    
+    protected $beforeInsert = ['normalizarCorreo'];
+    protected $beforeUpdate = ['normalizarCorreo'];
 
     protected $validationRules = [
         'idpersona'      => 'required|is_natural_no_zero',
@@ -87,5 +90,17 @@ class CorreoElectronicoModel extends Model
         return $this->where('idpersona', (int)$idpersona)
                     ->orderBy('idcorreoelectronico', 'DESC')
                     ->findAll();
+    }
+    
+    /**
+     * Guarda el correo sin espacios y en minúsculas
+     */
+    protected function normalizarCorreo(array $data): array
+    {
+        if (isset($data['data']['correo'])) {
+            $data['data']['correo'] = strtolower(trim($data['data']['correo']));
+        }
+
+        return $data;
     }
 }
