@@ -88,7 +88,7 @@
                                             <i class="bi bi-pencil-square"></i>
                                         </a>
                                         <button type="button" class="btn btn-outline-danger" title="Eliminar"
-                                                onclick="confirmarBorrado('<?= base_url('direccion/delete/' . $d['iddireccion']) ?>', '¿Desea eliminar esta dirección?')">
+                                                onclick="confirmarBorrado('<?= base_url('direccion/delete/' . $d['iddireccion']) ?>', '¿Desea eliminar la dirección #<?= esc($d['iddireccion']) ?>?')">
                                             <i class="bi bi-trash-fill"></i>
                                         </button>
                                     </div>
