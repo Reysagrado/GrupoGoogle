@@ -17,6 +17,9 @@
             <a href="<?= base_url('estadocivil') ?>" class="btn btn-outline-secondary btn-sm">
                 <i class="bi bi-card-text me-1"></i> Ficha Registro
             </a>
+            <a href="<?= base_url() ?>" class="btn btn-outline-dark btn-sm">
+                <i class="bi bi-house me-1"></i> Inicio
+            </a>
         </div>
     </div>
 
