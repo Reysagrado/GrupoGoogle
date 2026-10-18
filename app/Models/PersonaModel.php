@@ -136,5 +136,17 @@ class PersonaModel extends Model
             'distEC'           => $distEC,
             'ultimasPersonas'  => $ultimasPersonas,
         ];
+    } 
+    
+    /**
+     * Calcula la edad en años a partir de la fecha de nacimiento
+     */
+    public function calcularEdad(?string $fechaNacimiento): ?int
+    {
+        if (empty($fechaNacimiento)) {
+            return null;
+        }
+
+        return (new \DateTime($fechaNacimiento))->diff(new \DateTime('today'))->y;
     }
 }
