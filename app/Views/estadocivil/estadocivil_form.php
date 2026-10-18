@@ -20,7 +20,7 @@
                 <div class="card-body">
                     <div class="mb-3">
                         <label for="nombre" class="form-label fw-semibold">Nombre del Estado Civil <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control <?= isset($errors['nombre']) ? 'is-invalid' : '' ?>" id="nombre" name="nombre" value="<?= esc($old['nombre'] ?? old('nombre')) ?>" placeholder="Ej: Soltero/a, Casado/a, Unión Libre..." required autofocus>
+                        <input type="text" class="form-control <?= isset($errors['nombre']) ? 'is-invalid' : '' ?>" id="nombre" name="nombre" value="<?= esc($old['nombre'] ?? old('nombre')) ?>"  placeholder="Ej: Soltero/a, Casado/a, Unión Libre..." maxlength="50" required autofocus>
                         <?php if (isset($errors['nombre'])): ?>
                             <div class="invalid-feedback"><?= esc($errors['nombre']) ?></div>
                         <?php endif; ?>
