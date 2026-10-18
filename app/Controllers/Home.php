@@ -33,6 +33,7 @@ class Home extends BaseController
             'title'  => 'Panel Principal - Sistema de Información eysfwis',
             'module' => 'home',
             'stats'  => $stats,
+     'cumpleanos' => $this->personaModel->getCumpleanosDelMes(),
         ];
 
         return view('home/index', $data);
