@@ -49,7 +49,7 @@
                     <!-- Dirección -->
                     <div class="mb-3">
                         <label for="direccion" class="form-label fw-semibold">Dirección Detallada <span class="text-danger">*</span></label>
-                        <textarea class="form-control <?= isset($errors['direccion']) ? 'is-invalid' : '' ?>" id="direccion" name="direccion" rows="3" required><?= esc(old('direccion', $direccion['direccion'])) ?></textarea>
+                        <textarea class="form-control <?= isset($errors['direccion']) ? 'is-invalid' : '' ?>" id="direccion" name="direccion" rows="3" maxlength="255" required><?= esc(old('direccion', $direccion['direccion'])) ?></textarea>
                         <?php if (isset($errors['direccion'])): ?>
                             <div class="invalid-feedback"><?= esc($errors['direccion']) ?></div>
                         <?php endif; ?>
