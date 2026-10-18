@@ -20,6 +20,9 @@ class PersonaModel extends Model
         'idsexo',
         'idestadocivil',
     ];
+    
+    protected $beforeInsert = ['normalizarNombres'];
+    protected $beforeUpdate = ['normalizarNombres'];
 
     protected $validationRules = [
         'cedula'          => 'required|min_length[5]|max_length[20]|is_unique[persona.cedula,idpersona,{idpersona}]',
@@ -149,4 +152,18 @@ class PersonaModel extends Model
 
         return (new \DateTime($fechaNacimiento))->diff(new \DateTime('today'))->y;
     }
-}
+
+    /**
+     * Quita espacios sobrantes y pone mayúscula inicial a nombres y apellidos
+     */
+    protected function normalizarNombres(array $data): array
+    {
+        foreach (['nombres', 'apellidos'] as $campo) {
+            if (isset($data['data'][$campo])) {
+                $data['data'][$campo] = mb_convert_case(trim($data['data'][$campo]), MB_CASE_TITLE, 'UTF-8');
+            }
+        }
+
+        return $data;
+    }
+    }
