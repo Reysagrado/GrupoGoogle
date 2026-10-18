@@ -63,7 +63,7 @@
                             <?php if (!empty($persona['fechanacimiento'])): ?>
                                 <?= date('d/m/Y', strtotime($persona['fechanacimiento'])) ?>
                                 <span class="text-muted small">
-                                    (<?= date_diff(date_create($persona['fechanacimiento']), date_create('today'))->y ?> años)
+                                    (<?= model(\App\Models\PersonaModel::class)->calcularEdad($persona['fechanacimiento']) ?> años)
                                 </span>
                             <?php else: ?>
                                 <span class="text-muted fst-italic">No registrada</span>
