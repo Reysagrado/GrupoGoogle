@@ -35,6 +35,7 @@ class EstadoCivil extends BaseController
             'estadoCivil' => $estadoCivil,
             'currentId'   => $currentId,
             'posicion'    => $posicion,
+            'totalPersonas' => $currentId ? $this->estadoCivilModel->contarPersonas($currentId) : 0,
         ];
 
         return view('estadocivil/estadocivil_record', $data);
@@ -161,7 +162,7 @@ class EstadoCivil extends BaseController
             return redirect()->to(base_url('estadocivil/actual/' . $id))
                              ->with('error', 'No se puede eliminar: hay personas con este estado civil.');
         }
-        
+
         $this->estadoCivilModel->delete((int)$id);
 
         $ultimo = $this->estadoCivilModel->elultimo();
