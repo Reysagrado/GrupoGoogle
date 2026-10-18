@@ -43,7 +43,7 @@
                         <label for="correo" class="form-label fw-semibold">Correo Electrónico <span class="text-danger">*</span></label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="bi bi-envelope-at"></i></span>
-                            <input type="email" class="form-control <?= isset($errors['correo']) ? 'is-invalid' : '' ?>" id="correo" name="correo" value="<?= esc($old['correo'] ?? old('correo')) ?>" placeholder="ejemplo@correo.com" required>
+                            <input type="email" maxlength="150" class="form-control <?= isset($errors['correo']) ? 'is-invalid' : '' ?>" id="correo" name="correo" value="<?= esc($old['correo'] ?? old('correo')) ?>" placeholder="ejemplo@correo.com" required>
                             <?php if (isset($errors['correo'])): ?>
                                 <div class="invalid-feedback"><?= esc($errors['correo']) ?></div>
                             <?php endif; ?>
