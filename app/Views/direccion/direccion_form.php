@@ -52,7 +52,7 @@
                     <!-- Dirección -->
                     <div class="mb-3">
                         <label for="direccion" class="form-label fw-semibold">Dirección Detallada <span class="text-danger">*</span></label>
-                        <textarea class="form-control <?= isset($errors['direccion']) ? 'is-invalid' : '' ?>" id="direccion" name="direccion" rows="3" placeholder="Ej: Calle 10 de Agosto y Bolívar #452, Barrio Central..." required><?= esc($old['direccion'] ?? old('direccion')) ?></textarea>
+                        <textarea class="form-control <?= isset($errors['direccion']) ? 'is-invalid' : '' ?>" id="direccion" name="direccion" rows="3" maxlength="255" placeholder="Ej: Calle 10 de Agosto y Bolívar #452, Barrio Central..." required><?= esc($old['direccion'] ?? old('direccion')) ?></textarea>
                         <?php if (isset($errors['direccion'])): ?>
                             <div class="invalid-feedback"><?= esc($errors['direccion']) ?></div>
                         <?php endif; ?>
