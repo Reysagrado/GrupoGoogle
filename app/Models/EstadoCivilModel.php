@@ -57,4 +57,12 @@ class EstadoCivilModel extends Model
 
         return $data;
     }
+    
+    /**
+     * Cantidad de personas que usan este estado civil
+     */
+    public function contarPersonas(int $id): int
+    {
+        return (int) $this->db->table('persona')->where('idestadocivil', $id)->countAllResults();
+    }
 }
