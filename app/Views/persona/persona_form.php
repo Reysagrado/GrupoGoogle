@@ -33,7 +33,7 @@
 
                         <div class="col-md-6">
                             <label for="fechanacimiento" class="form-label fw-semibold">Fecha de Nacimiento</label>
-                            <input type="date" class="form-control <?= isset($errors['fechanacimiento']) ? 'is-invalid' : '' ?>" id="fechanacimiento" name="fechanacimiento" value="<?= esc($old['fechanacimiento'] ?? old('fechanacimiento')) ?>">
+                            <input type="date" class="form-control <?= isset($errors['fechanacimiento']) ? 'is-invalid' : '' ?>" id="fechanacimiento" name="fechanacimiento" max="<?= date('Y-m-d') ?>" value="<?= esc($old['fechanacimiento'] ?? old('fechanacimiento')) ?>">
                             <?php if (isset($errors['fechanacimiento'])): ?>
                                 <div class="invalid-feedback"><?= esc($errors['fechanacimiento']) ?></div>
                             <?php endif; ?>
