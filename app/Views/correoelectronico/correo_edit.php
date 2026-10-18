@@ -39,7 +39,7 @@
                         <label for="correo" class="form-label fw-semibold">Correo Electrónico <span class="text-danger">*</span></label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="bi bi-envelope-at"></i></span>
-                            <input type="email" maxlength="150" class="form-control <?= isset($errors['correo']) ? 'is-invalid' : '' ?>" id="correo" name="correo" value="<?= esc(old('correo', $correo['correo'])) ?>" required>
+                            <input type="email" class="form-control <?= isset($errors['correo']) ? 'is-invalid' : '' ?>" id="correo" name="correo" value="<?= esc(old('correo', $correo['correo'])) ?>" required>
                             <?php if (isset($errors['correo'])): ?>
                                 <div class="invalid-feedback"><?= esc($errors['correo']) ?></div>
                             <?php endif; ?>
@@ -62,7 +62,7 @@
                         <!-- Fecha de Obtención -->
                         <div class="col-md-6">
                             <label for="fechaoptencion" class="form-label fw-semibold">Fecha de Obtención / Creación</label>
-                            <input type="date" class="form-control <?= isset($errors['fechaoptencion']) ? 'is-invalid' : '' ?>" id="fechaoptencion" name="fechaoptencion" value="<?= esc(old('fechaoptencion', $correo['fechaoptencion'])) ?>">
+                            <input type="date" max="<?= date('Y-m-d') ?>" class="form-control <?= isset($errors['fechaoptencion']) ? 'is-invalid' : '' ?>" id="fechaoptencion" name="fechaoptencion" value="<?= esc(old('fechaoptencion', $correo['fechaoptencion'])) ?>">
                             <?php if (isset($errors['fechaoptencion'])): ?>
                                 <div class="invalid-feedback"><?= esc($errors['fechaoptencion']) ?></div>
                             <?php endif; ?>
