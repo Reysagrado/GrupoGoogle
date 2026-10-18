@@ -13,7 +13,8 @@ class DireccionModel extends Model
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $allowedFields    = ['idpersona', 'direccion', 'nombre', 'tipo'];
-
+    protected $beforeInsert = ['normalizarDireccion'];
+    protected $beforeUpdate = ['normalizarDireccion'];
     protected $validationRules = [
         'idpersona' => 'required|is_natural_no_zero',
         'direccion' => 'required|min_length[3]|max_length[255]',
@@ -77,5 +78,18 @@ class DireccionModel extends Model
         return $this->where('idpersona', (int)$idpersona)
                     ->orderBy('iddireccion', 'DESC')
                     ->findAll();
+    }
+
+    /**
+     * Quita espacios sobrantes y pone mayúscula en la primera letra de la dirección
+     */
+    protected function normalizarDireccion(array $data): array
+    {
+        if (isset($data['data']['direccion'])) {
+            $texto = trim($data['data']['direccion']);
+            $data['data']['direccion'] = mb_strtoupper(mb_substr($texto, 0, 1, 'UTF-8'), 'UTF-8') . mb_substr($texto, 1, null, 'UTF-8');
+        }
+
+        return $data;
     }
 }
